@@ -8,22 +8,23 @@ const Filters = () => {
 
     const filters = ["all", "active", "completed"];
 
+    const handleChange = (e) => {
+        dispatch(setFilter(e.target.value));
+    };
+
     return (
-        <div className="flex gap-2 justify-center">
-            {filters.map((f) => (
-                <button
-                    key={f}
-                    onClick={() => dispatch(setFilter(f))}
-                    disabled={filter === f}
-                    className={`px-4 py-2 rounded-md font-medium transition-colors
-            ${filter === f
-                            ? "bg-blue-600 text-white cursor-not-allowed"
-                            : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                        }`}
-                >
-                    {f.charAt(0).toUpperCase() + f.slice(1)}
-                </button>
-            ))}
+        <div className="w-full">
+            <select
+                value={filter}
+                onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm cursor-pointer"
+            >
+                {filters.map((f) => (
+                    <option key={f} value={f}>
+                        {f.charAt(0).toUpperCase() + f.slice(1)}
+                    </option>
+                ))}
+            </select>
         </div>
     );
 };

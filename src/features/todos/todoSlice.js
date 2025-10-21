@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Load todos from localStorage if exists
 const initialState = {
     todos: JSON.parse(localStorage.getItem('todos')) || [],
-    filter: 'all', // all, completed, active
+    filter: 'all',
     search: '',
 };
 
